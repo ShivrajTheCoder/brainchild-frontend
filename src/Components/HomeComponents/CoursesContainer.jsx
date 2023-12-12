@@ -34,7 +34,7 @@ export default function CoursesContainer() {
         error && <ErrorComponent message={error}/>
     }
     {
-        !loading && !error && <div className='grid grid-cols-4 gap-3'>
+        !loading && !error && <div className='grid grid-cols-4 gap-3 mx-10'>
             {
                 courses.map(course=>(
                     <CourseCard key={course._id} course={course}/>

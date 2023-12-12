@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const truncateDescription = (description, wordLimit) => {
     const words = description.split(' ');
@@ -33,7 +34,7 @@ const CourseCard = ({ course, descriptionWordLimit = 20 }) => {
                 </div>
             </div>
             <div className='flex items-end justify-between w-full text-lg font-bold my-3'>
-                <button className='bg-black text-white py-3 px-5 rounded-md shadow-lg'>Show Details</button>
+                <Link to={`/course/${course._id}`} className='bg-black text-white py-2 px-5 rounded-md shadow-lg'>Show Details</Link>
             </div>
 
         </div>
