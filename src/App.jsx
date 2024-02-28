@@ -9,6 +9,7 @@ import CourseDetials from './Screens/CourseDetials';
 import AboutUs from './Screens/Aboutus';
 import TeacherDashboard from './Screens/teachers/TeacherDashboard';
 import AdminDashboard from './Screens/admin/AdminDashboard';
+import ParentDashboard from './Screens/parents/ParentDashboard';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
           {/* teacher routes */}
           <Route path='/teacherdashboard' element={<TeacherDashboard/>} />
           <Route path='/admindashboard' element={<AdminDashboard/>} />
+          <Route path='/parentdashboard' element={<ParentDashboard/>} />
         </Routes>
       </div>
       <Footer />
