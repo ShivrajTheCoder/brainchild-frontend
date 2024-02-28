@@ -10,6 +10,7 @@ import AboutUs from './Screens/Aboutus';
 import TeacherDashboard from './Screens/teachers/TeacherDashboard';
 import AdminDashboard from './Screens/admin/AdminDashboard';
 import ParentDashboard from './Screens/parents/ParentDashboard';
+import CreateTestScreen from './Screens/teachers/createTestScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
           <Route path='/course/:courseId' element={<CourseDetials/>}/>
           {/* teacher routes */}
           <Route path='/teacherdashboard' element={<TeacherDashboard/>} />
+          <Route path='/addtest' element={<CreateTestScreen/>} />
           <Route path='/admindashboard' element={<AdminDashboard/>} />
           <Route path='/parentdashboard' element={<ParentDashboard/>} />
         </Routes>
