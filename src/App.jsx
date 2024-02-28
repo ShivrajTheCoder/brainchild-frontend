@@ -6,16 +6,22 @@ import Signup from './Screens/Auth/Signup';
 import Navbar from './Components/Layout/Navbar';
 import Footer from './Components/Layout/Footer';
 import CourseDetials from './Screens/CourseDetials';
+import AboutUs from './Screens/Aboutus';
+import TeacherDashboard from './Screens/teachers/TeacherDashboard';
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="container mx-auto mt-4">
+      <div className="container mx-auto ">
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/course/:courseId' element={<CourseDetials/>}/>
+          <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          {/* student routes */}
+          <Route path='/course/:courseId' element={<CourseDetials/>}/>
+          {/* teacher routes */}
+          <Route path='/teacherdashboard' element={<TeacherDashboard/>} />
         </Routes>
       </div>
       <Footer />
