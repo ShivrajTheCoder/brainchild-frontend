@@ -8,6 +8,7 @@ import Footer from './Components/Layout/Footer';
 import CourseDetials from './Screens/CourseDetials';
 import AboutUs from './Screens/Aboutus';
 import TeacherDashboard from './Screens/teachers/TeacherDashboard';
+import AdminDashboard from './Screens/admin/AdminDashboard';
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/course/:courseId' element={<CourseDetials/>}/>
           {/* teacher routes */}
           <Route path='/teacherdashboard' element={<TeacherDashboard/>} />
+          <Route path='/admindashboard' element={<AdminDashboard/>} />
         </Routes>
       </div>
       <Footer />
