@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../../Input';
-
+import Textarea from '../../Textarea';
 
 const AddVideoForm = ({ courseId, onClose }) => {
   const [formData, setFormData] = useState({
@@ -42,19 +42,13 @@ const AddVideoForm = ({ courseId, onClose }) => {
           onChange={handleChange}
           placeholder="Enter video title"
         />
-        <div className="mb-4">
-          <label htmlFor="videoDescription" className="block text-sm font-medium text-gray-700">Video Description:</label>
-          <textarea
-            id="videoDescription"
-            name="videoDescription"
-            value={formData.videoDescription}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50"
-            rows="3"
-            placeholder="Enter video description"
-            required
-          ></textarea>
-        </div>
+        <Textarea
+          label="Video Description:"
+          name="videoDescription"
+          value={formData.videoDescription}
+          onChange={handleChange}
+          placeholder="Enter video description"
+        />
         <div className="flex justify-end">
           <button type="submit" className="mr-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add Video</button>
           <button type="button" onClick={onClose} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400">Cancel</button>
