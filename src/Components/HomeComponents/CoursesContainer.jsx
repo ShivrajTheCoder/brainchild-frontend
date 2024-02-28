@@ -5,43 +5,46 @@ import LoadingComponent from "../LoaingComponent";
 import ErrorComponent from '../ErrorComponent';
 import CourseCard from './CourseCard';
 export default function CoursesContainer() {
-    const apiUrl=BASE_URL;
-    const [courses,setCourses]=useState([]);
-    const [loading,setLoading]=useState(true);
-    const [error,setError]=useState(null);
-    useEffect(()=>{
+    const apiUrl = BASE_URL;
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
         setError(null);
-        const getCourses=async()=>{
-            try{
-                const resp=await axios.get(`${apiUrl}/courses/getallcourses`);
+        const getCourses = async () => {
+            try {
+                const resp = await axios.get(`${apiUrl}/courses/getallcourses`);
                 console.log(resp.data.courses);
                 setCourses(resp.data.courses)
             }
-            catch(error){
+            catch (error) {
                 setError("Something went wrong!");
             }
-            
+
         }
         getCourses();
         setLoading(false);
-    },[])
-  return (
-    <>
-    {
-        loading && <LoadingComponent/>
-    }
-    {
-        error && <ErrorComponent message={error}/>
-    }
-    {
-        !loading && !error && <div className='grid grid-cols-4 gap-3 mx-10'>
+    }, [])
+    return (
+        <>
             {
-                courses.map(course=>(
-                    <CourseCard key={course._id} course={course}/>
-                ))
+                loading && <LoadingComponent />
             }
-        </div>
-    }
-    </>
-  )
+            {
+                error && <ErrorComponent message={error} />
+            }
+            {
+                !loading && !error && <section >
+                    <h2 className=' font-bold text-xl text-gray-800'>My Courses</h2>
+                    <div className='grid grid-cols-4 gap-3 '>
+                        {
+                            courses.map(course => (
+                                <CourseCard key={course._id} course={course} />
+                            ))
+                        }
+                    </div>
+                </section>
+            }
+        </>
+    )
 }

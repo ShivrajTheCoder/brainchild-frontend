@@ -11,6 +11,7 @@ import TeacherDashboard from './Screens/teachers/TeacherDashboard';
 import AdminDashboard from './Screens/admin/AdminDashboard';
 import ParentDashboard from './Screens/parents/ParentDashboard';
 import CreateTestScreen from './Screens/teachers/createTestScreen';
+import TaketestScreen from './Screens/user/TaketestScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/take-test' element={<TaketestScreen />} />
           {/* student routes */}
           <Route path='/course/:courseId' element={<CourseDetials/>}/>
           {/* teacher routes */}
