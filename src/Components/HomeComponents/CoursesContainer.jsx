@@ -34,16 +34,14 @@ export default function CoursesContainer() {
                 error && <ErrorComponent message={error} />
             }
             {
-                !loading && !error && <section >
-                    <h2 className=' font-bold text-xl text-gray-800'>My Courses</h2>
-                    <div className='grid grid-cols-4 gap-3 '>
-                        {
-                            courses.map(course => (
-                                <CourseCard key={course._id} course={course} />
-                            ))
-                        }
-                    </div>
-                </section>
+                !loading && !error &&
+                <div className='grid grid-cols-3 gap-3 w-fit'>
+                    {
+                        courses.map(course => (
+                            <CourseCard key={course._id} course={course} />
+                        ))
+                    }
+                </div>
             }
         </>
     )

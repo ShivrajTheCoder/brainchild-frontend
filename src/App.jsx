@@ -12,24 +12,27 @@ import AdminDashboard from './Screens/admin/AdminDashboard';
 import ParentDashboard from './Screens/parents/ParentDashboard';
 import CreateTestScreen from './Screens/teachers/createTestScreen';
 import TaketestScreen from './Screens/user/TaketestScreen';
+import Explore from './Screens/user/Explore';
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <div className="container mx-auto ">
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} >
+            <Route index  element={<Explore/>}/>
+          </Route>
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/take-test' element={<TaketestScreen />} />
           {/* student routes */}
-          <Route path='/course/:courseId' element={<CourseDetials/>}/>
+          <Route path='/course/:courseId' element={<CourseDetials />} />
           {/* teacher routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard/>} />
-          <Route path='/addtest' element={<CreateTestScreen/>} />
-          <Route path='/admindashboard' element={<AdminDashboard/>} />
-          <Route path='/parentdashboard' element={<ParentDashboard/>} />
+          <Route path='/teacherdashboard' element={<TeacherDashboard />} />
+          <Route path='/addtest' element={<CreateTestScreen />} />
+          <Route path='/admindashboard' element={<AdminDashboard />} />
+          <Route path='/parentdashboard' element={<ParentDashboard />} />
         </Routes>
       </div>
       <Footer />
