@@ -70,7 +70,7 @@ const AddVideoForm = ({ courseId, onClose }) => {
     try {
       const response = await axios.post(`${apiUrl}/teacher/uploadvideo`, data);
       console.log(response.data); // Handle response data as needed
-      // onClose(); // Close modal after successful upload
+      onClose(); // Close modal after successful upload
     } catch (error) {
       console.error('Error uploading video:', error);
       // Handle error, show message to the user, etc.
