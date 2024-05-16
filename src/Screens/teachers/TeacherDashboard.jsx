@@ -1,10 +1,12 @@
 import React from 'react';
-import Sidebar from '../../Components/TeacherComponents/Sidebar';
+
 import TeacherCoursesContainer from '../../Components/TeacherComponents/TeacherCoursesContainer';
 import TeacherVideoContainer from '../../Components/TeacherComponents/TeacherVideoContainer';
+import TeacherSidebar from './../../Components/Layout/TeacherSidebar';
+import { Outlet } from 'react-router-dom';
+
 
 export default function TeacherDashboard() {
-    // Sample courses data (Replace this with actual data from API response)
     const courses =
         [
             {
@@ -50,79 +52,55 @@ export default function TeacherDashboard() {
         ]
 
 
-        const videos = [
-            {
-              "_id": "6578b3a67a877289b8deee83",
-              "title": "Introduction to React",
-              "description": "This video provides an introduction to React, a popular JavaScript library for building user interfaces. Learn the basics of React components, state, and props.",
-              "author": "6578af9de664acfdcff9e0b4",
-              "approved": true,
-              "course": "6578b3a67a877289b8deee83",
-              "likes": 10,
-              "__v": 0
-            },
-            // Add more videos here
-            {
-              "_id": "6578b3a67a877289b8deee84",
-              "title": "JavaScript Fundamentals",
-              "description": "This video covers the fundamental concepts of JavaScript programming language. Learn about variables, data types, control structures, functions, and more.",
-              "author": "6578af9de664acfdcff9e0b4",
-              "approved": true,
-              "course": "6578b3a67a877289b8deee83",
-              "likes": 15,
-              "__v": 0
-            },
-            {
-              "_id": "6578b3a67a877289b8deee85",
-              "title": "Node.js Basics",
-              "description": "This video introduces Node.js, a runtime environment for executing JavaScript code outside the browser. Learn about event-driven architecture, modules, and building server-side applications.",
-              "author": "6578af9de664acfdcff9e0b4",
-              "approved": true,
-              "course": "6578b3a67a877289b8deee83",
-              "likes": 20,
-              "__v": 0
-            },
-            {
-              "_id": "6578b3a67a877289b8deee86",
-              "title": "CSS Flexbox Layout",
-              "description": "This video demonstrates how to use CSS Flexbox for creating flexible layouts. Learn about flex containers, flex items, and various flex properties.",
-              "author": "6578af9de664acfdcff9e0b4",
-              "approved": true,
-              "course": "6578b3a67a877289b8deee83",
-              "likes": 12,
-              "__v": 0
-            }
-          ];
+    const videos = [
+        {
+            "_id": "6578b3a67a877289b8deee83",
+            "title": "Introduction to React",
+            "description": "This video provides an introduction to React, a popular JavaScript library for building user interfaces. Learn the basics of React components, state, and props.",
+            "author": "6578af9de664acfdcff9e0b4",
+            "approved": true,
+            "course": "6578b3a67a877289b8deee83",
+            "likes": 10,
+            "__v": 0
+        },
+        // Add more videos here
+        {
+            "_id": "6578b3a67a877289b8deee84",
+            "title": "JavaScript Fundamentals",
+            "description": "This video covers the fundamental concepts of JavaScript programming language. Learn about variables, data types, control structures, functions, and more.",
+            "author": "6578af9de664acfdcff9e0b4",
+            "approved": true,
+            "course": "6578b3a67a877289b8deee83",
+            "likes": 15,
+            "__v": 0
+        },
+        {
+            "_id": "6578b3a67a877289b8deee85",
+            "title": "Node.js Basics",
+            "description": "This video introduces Node.js, a runtime environment for executing JavaScript code outside the browser. Learn about event-driven architecture, modules, and building server-side applications.",
+            "author": "6578af9de664acfdcff9e0b4",
+            "approved": true,
+            "course": "6578b3a67a877289b8deee83",
+            "likes": 20,
+            "__v": 0
+        },
+        {
+            "_id": "6578b3a67a877289b8deee86",
+            "title": "CSS Flexbox Layout",
+            "description": "This video demonstrates how to use CSS Flexbox for creating flexible layouts. Learn about flex containers, flex items, and various flex properties.",
+            "author": "6578af9de664acfdcff9e0b4",
+            "approved": true,
+            "course": "6578b3a67a877289b8deee83",
+            "likes": 12,
+            "__v": 0
+        }
+    ];
 
     return (
         <div className="flex">
-            {/* Sidebar */}
-            <Sidebar />
-
-            {/* Main Content */}
-            <div className="w-3/4 p-4">
-                <div className="bg-white p-4 rounded shadow">
-                    <div className="flex justify-between mb-4">
-                        <div>
-                            <h3 className="text-lg font-semibold">Number of Courses:</h3>
-                            {/* Replace with actual number of courses */}
-                            <p>10</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold">Number of Videos Uploaded:</h3>
-                            {/* Replace with actual number of videos */}
-                            <p>20</p>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold">Number of Tests Uploaded:</h3>
-                            {/* Replace with actual number of tests */}
-                            <p>5</p>
-                        </div>
-                    </div>
-                </div>
-
-                <TeacherCoursesContainer courses={courses} />
-                <TeacherVideoContainer videos={videos} />
+            <TeacherSidebar />
+            <div className="flex-1 overflow-y-scroll h-screen ">
+                <Outlet />
             </div>
         </div>
     );

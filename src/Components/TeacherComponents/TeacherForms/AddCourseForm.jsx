@@ -70,7 +70,7 @@ const AddCourseForm = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 h-96  w-80 overflow-y-auto">
+    <div className="bg-white rounded-lg shadow-md p-6 overflow-y-auto">
       <form onSubmit={handleSubmit}>
         <Input
           label="Course Title:"
@@ -90,7 +90,7 @@ const AddCourseForm = ({ onClose }) => {
           error={valErrors.description}
         />
         <div className='w-full h-fit py-3 flex flex-col'>
-          <label className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-green-500 text-white font-semibold " htmlFor="courseThumbnail">
+          <label className="shadow appearance-none border rounded w-fit py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-green-500 text-white font-semibold " htmlFor="courseThumbnail">
             Choose Thumbnail
             <input
               className="hidden"

@@ -13,6 +13,8 @@ import ParentDashboard from './Screens/parents/ParentDashboard';
 import CreateTestScreen from './Screens/teachers/createTestScreen';
 import TaketestScreen from './Screens/user/TaketestScreen';
 import Explore from './Screens/user/Explore';
+import TeacherInfo from './Screens/teachers/TeacherInfo';
+import AddCourseForm from './Components/TeacherComponents/TeacherForms/AddCourseForm';
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +22,7 @@ function App() {
       <div className="container mx-auto ">
         <Routes>
           <Route path='/' element={<Home />} >
-            <Route index  element={<Explore/>}/>
+            <Route index element={<Explore />} />
           </Route>
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
@@ -29,8 +31,12 @@ function App() {
           {/* student routes */}
           <Route path='/course/:courseId' element={<CourseDetials />} />
           {/* teacher routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard />} />
-          <Route path='/addtest' element={<CreateTestScreen />} />
+          <Route path='/teacherdashboard' element={<TeacherDashboard />} >
+            <Route index element={<TeacherInfo />} />
+            <Route path='/teacherdashboard/addtest' element={<CreateTestScreen />} />
+            <Route path='/teacherdashboard/addcourse' element={<AddCourseForm />} />
+          </Route>
+
           <Route path='/admindashboard' element={<AdminDashboard />} />
           <Route path='/parentdashboard' element={<ParentDashboard />} />
         </Routes>
