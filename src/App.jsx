@@ -15,6 +15,9 @@ import TaketestScreen from './Screens/user/TaketestScreen';
 import Explore from './Screens/user/Explore';
 import TeacherInfo from './Screens/teachers/TeacherInfo';
 import AddCourseForm from './Components/TeacherComponents/TeacherForms/AddCourseForm';
+import ChildReportScreen from './Screens/parents/ChildReportScreen';
+import FeedbackForm from './Components/ParentComponents/ParentForms/FeedbackForm';
+import CourseRequestsScreen from './Screens/parents/CourseRequestsScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -38,7 +41,11 @@ function App() {
           </Route>
 
           <Route path='/admindashboard' element={<AdminDashboard />} />
-          <Route path='/parentdashboard' element={<ParentDashboard />} />
+          <Route path='/parentdashboard' element={<ParentDashboard />} >
+            <Route index element={<ChildReportScreen/>} />
+            <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
+            <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
+          </Route>
         </Routes>
       </div>
       <Footer />

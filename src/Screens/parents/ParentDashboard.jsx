@@ -2,6 +2,7 @@ import React from 'react';
 import ParentSidebar from '../../Components/ParentComponents/ParentSidebar';
 import EnrolledCoursesContainer from "../../Components/ParentComponents/EnrolledCousesContainer"
 import WatchedVideoContainer from "../../Components/ParentComponents/WatchedVideoContainer"
+import { Outlet } from 'react-router-dom';
 const ParentDashboard = () => {
   // Dummy data for enrolled courses and watched videos
   const courses = [
@@ -92,13 +93,9 @@ const ParentDashboard = () => {
 
   return (
     <div className="flex">
-      {/* Sidebar */}
       <ParentSidebar />
-
-      {/* Main Content */}
-      <div className="w-3/4 p-4">
-        <EnrolledCoursesContainer enrolledCourses={courses} />
-        <WatchedVideoContainer videos={videos} />
+      <div className="flex-1 overflow-y-scroll h-screen ">
+        <Outlet />
       </div>
     </div>
   );

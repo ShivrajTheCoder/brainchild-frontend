@@ -6,13 +6,14 @@ import ErrorComponent from '../Components/ErrorComponent';
 import { BASE_URL } from '../BASE_URL';
 
 export default function CourseDetails() {
+    const [enrreq,setEnreq]=useState(false);
     const { courseId } = useParams();
     const [course, setCourse] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const apiUrl = BASE_URL; // Assuming BASE_URL is defined elsewhere
     const [fullScreenVideo, setFullScreenVideo] = useState(null);
-    const defaultImageUrl = 'https://res.cloudinary.com/dushmacr8/image/upload/v1686558017/samples/landscapes/nature-mountains.jpg';
+    const defaultImageUrl =  'https://res.cloudinary.com/dushmacr8/image/upload/v1686558017/samples/landscapes/nature-mountains.jpg';
     useEffect(() => {
         setError(null);
         const fetchCourse = async () => {
@@ -27,7 +28,22 @@ export default function CourseDetails() {
         };
         fetchCourse();
     }, [courseId]);
-
+    const handleEnroll=async()=>{
+        try {
+            const resp=await axios.post(`${apiUrl}/user/requestenrollment`,{
+                courseId:courseId,
+                parentId:"65df7dec69972b109beaec53",
+                userId:"65df757175d959b627baeef2"
+            })
+            console.log(resp);
+            if(resp.status===201){
+                console.log("sucess");
+                setEnreq(true);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     // Define the videos array
     const videos = [
         { title: 'Video 1 Title', url: 'https://res.cloudinary.com/dushmacr8/video/upload/v1686558021/samples/sea-turtle.mp4' },
@@ -68,9 +84,12 @@ export default function CourseDetails() {
                     <div className=' my-10 mx-10 grid grid-cols-3'>
                         <p className='px-8 text-lg border py-8 mx-3 col-span-2'>{course.description}</p>
                         <div className='w-full flex flex-col-reverse px-5 py-3'>
-                            <button className='py-3 px-5 border w-full my-5 text-xl font-bold bg-gradient-to-r from-blue-50 to-blue-100 shadow-md'>
-                                Enroll Now
-                            </button>
+                            {! enrreq && <button className='py-3 px-5 border w-full my-5 text-xl font-bold bg-gradient-to-r from-blue-50 to-blue-100 shadow-md' onClick={handleEnroll}>
+                                Request Enrollment
+                            </button>}
+                            { enrreq && <button className='py-3 px-5 border w-full my-5 text-xl font-bold bg-gradient-to-r from-blue-50 to-blue-100 shadow-md' onClick={handleEnroll}>
+                                Request Pending
+                            </button>}
                             <h1 className='text-3xl font-extrabold'>Rs. 1,500</h1>
                         </div>
                     </div>
