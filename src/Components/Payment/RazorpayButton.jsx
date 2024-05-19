@@ -35,7 +35,7 @@ export const RazorpayButton = ({ order }) => {
                             console.log(resp, "paymetn suces resp");
                             if (resp.status === 200) {
                                 console.log("sucess");
-                                navigate("/parentdashboard/courserequests")
+                                navigate("/parentdashboard")
                             }
                             else{
                                 toast.error("something went wrong!");

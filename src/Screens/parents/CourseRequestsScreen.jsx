@@ -47,7 +47,7 @@ export default function CourseRequestsScreen() {
   }
 
   if (error) {
-    return <div className='m-10'>Error: {error.message}</div>;
+    return <div className='m-10'>No requests found!</div>;
   }
 
   return (

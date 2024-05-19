@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ParentSidebar = () => {
 
-
+  const navigate=useNavigate();
   return (
     <div className="bg-gray-200 w-1/4 h-screen flex flex-col  p-4">
-      <h2 className="text-xl font-semibold mb-4">Parent Sidebar</h2>
+      <h2 className="text-xl font-semibold mb-4 cursor-pointer" onClick={()=>navigate("/parentdashboard")}>Parent Dashboard</h2>
       <button
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded my-1"
       >
