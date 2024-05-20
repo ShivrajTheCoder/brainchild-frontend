@@ -90,7 +90,7 @@ export default function CourseDetails() {
                             { enrreq && <button className='py-3 px-5 border w-full my-5 text-xl font-bold bg-gradient-to-r from-blue-50 to-blue-100 shadow-md' onClick={handleEnroll}>
                                 Request Pending
                             </button>}
-                            <h1 className='text-3xl font-extrabold'>Rs. 1,500</h1>
+                            <h1 className='text-3xl font-extrabold'>Rs. 500</h1>
                         </div>
                     </div>
                     <section className="mx-10">

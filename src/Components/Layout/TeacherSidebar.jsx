@@ -18,6 +18,21 @@ export default function TeacherSidebar() {
             Add Couse
           </Link>
         </li>
+        <li className="mb-2">
+          <Link to={"/teacherdashboard/addvideo"} className="text-left w-full bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded block" >
+            Add Video
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link to={"/teacherdashboard/addvideo"} className="text-left w-full bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded block" >
+            My Videos
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link to={"/teacherdashboard/addvideo"} className="text-left w-full bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded block" >
+            My Courses
+          </Link>
+        </li>
       </ul>
     
     </div>
