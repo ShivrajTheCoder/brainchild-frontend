@@ -56,7 +56,7 @@ export default function CourseRequestsScreen() {
       <div className='grid grid-cols-1 gap-4'>
         {requests.map((request) => (
           <div key={request._id} className='border p-4 rounded shadow grid grid-cols-10 gap-4'>
-            <img src={request.courseId.thumbnail} alt={request.courseId.name} className=' col-span-3 w-full' />
+            <img src={request.courseId.thumbnail || "https://res.cloudinary.com/dushmacr8/image/upload/v1686558017/samples/landscapes/nature-mountains.jpg"} alt={request.courseId.name} className=' col-span-3 w-full' />
             <div className=' col-span-7 '>
               <h2 className='font-bold text-xl'>{request.courseId.name}</h2>
               <p className='text-gray-700'>{request.courseId.description}</p>
@@ -74,7 +74,7 @@ export default function CourseRequestsScreen() {
               </button>
               }
               {
-                order && <RazorpayButton order={order}/>
+                order?.course===request.courseId._id && <RazorpayButton order={order}/>
               }
             </div>
           </div>
