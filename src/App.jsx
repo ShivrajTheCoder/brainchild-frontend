@@ -19,6 +19,8 @@ import ChildReportScreen from './Screens/parents/ChildReportScreen';
 import FeedbackForm from './Components/ParentComponents/ParentForms/FeedbackForm';
 import CourseRequestsScreen from './Screens/parents/CourseRequestsScreen';
 import AddVideoForm from './Components/TeacherComponents/TeacherForms/AddVideo';
+import TeacherCourses from './Screens/teachers/TeacherCourses';
+import TeacherVideos from './Screens/teachers/TeacherVideos';
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +42,8 @@ function App() {
             <Route path='/teacherdashboard/addtest' element={<CreateTestScreen />} />
             <Route path='/teacherdashboard/addcourse' element={<AddCourseForm />} />
             <Route path='/teacherdashboard/addvideo' element={<AddVideoForm />} />
+            <Route path='/teacherdashboard/viewcourse' element={<TeacherCourses />} />
+            <Route path='/teacherdashboard/viewvideos' element={<TeacherVideos />} />
           </Route>
 
           <Route path='/admindashboard' element={<AdminDashboard />} />
