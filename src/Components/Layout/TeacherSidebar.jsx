@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 export default function TeacherSidebar() {
   return (
     <div className="bg-gray-200 h-screen w-1/4 p-4">
-      <h2 className="text-xl font-semibold mb-4">Shivraj Teacher</h2>
+      <Link to={"/teacherdashboard"}>
+        <h2 className="text-xl font-semibold mb-4 cursor-pointer">Shivraj Teacher</h2>
+      </Link>
       <ul>
         <li className="mb-2">
           <Link to={"/teacherdashboard/addtest"} className="text-left w-full bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded block" >
@@ -34,7 +36,7 @@ export default function TeacherSidebar() {
           </Link>
         </li>
       </ul>
-    
+
     </div>
   );
 }
