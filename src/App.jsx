@@ -21,6 +21,9 @@ import CourseRequestsScreen from './Screens/parents/CourseRequestsScreen';
 import AddVideoForm from './Components/TeacherComponents/TeacherForms/AddVideo';
 import TeacherCourses from './Screens/teachers/TeacherCourses';
 import TeacherVideos from './Screens/teachers/TeacherVideos';
+import AdminInfoContainer from './Components/AdminComponents/AdminInfoContainer';
+import ApprovalVideos from './Screens/admin/ApprovalVideos';
+import ApprovalCourses from './Screens/admin/ApprovalCourses';
 function App() {
   return (
     <BrowserRouter>
@@ -46,9 +49,13 @@ function App() {
             <Route path='/teacherdashboard/viewvideos' element={<TeacherVideos />} />
           </Route>
 
-          <Route path='/admindashboard' element={<AdminDashboard />} />
+          <Route path='/admindashboard' element={<AdminDashboard />} >
+            <Route index element={<AdminInfoContainer/>} />
+            <Route path='/admindashboard/pendingvideos' element={<ApprovalVideos />} />
+            <Route path='/admindashboard/pendingcourses' element={<ApprovalCourses />} />
+          </Route>
           <Route path='/parentdashboard' element={<ParentDashboard />} >
-            <Route index element={<ChildReportScreen/>} />
+            <Route index element={<ChildReportScreen />} />
             <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
             <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
           </Route>

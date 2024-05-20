@@ -8,7 +8,7 @@ const AdminInfoContainer = () => {
   const numTests = 15;
 
   return (
-    <div className="bg-white p-4 rounded shadow mt-4">
+    <div className="bg-white p-4  mt-4">
       <h2 className="text-xl font-semibold mb-4">Admin Information</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div className="bg-gray-100 p-4 rounded shadow">
