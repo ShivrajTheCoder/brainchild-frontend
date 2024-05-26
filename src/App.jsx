@@ -24,6 +24,10 @@ import TeacherVideos from './Screens/teachers/TeacherVideos';
 import AdminInfoContainer from './Components/AdminComponents/AdminInfoContainer';
 import ApprovalVideos from './Screens/admin/ApprovalVideos';
 import ApprovalCourses from './Screens/admin/ApprovalCourses';
+import MyCourses from './Screens/user/MyCourses';
+import UpcomingTestsScreen from './Screens/user/UpcomingTestsScreen';
+import MyReportScreen from './Screens/user/MyReportScreen';
+import ViewCourse from './Screens/user/ViewCourse';
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +36,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} >
             <Route index element={<Explore />} />
+            <Route path='/mycourses' element={<MyCourses/>} />
+            <Route path='/upcomingtests' element={<UpcomingTestsScreen/>} />
+            <Route path='/myreport' element={<MyReportScreen/>} />
+            <Route path='/viewcourse/:courseId' element={<ViewCourse/>} />
           </Route>
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
