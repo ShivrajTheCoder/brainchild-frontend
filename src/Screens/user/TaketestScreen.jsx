@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const questions = [
   {
@@ -68,6 +69,21 @@ const TaketestScreen = () => {
     }));
   };
 
+  const [test,setTest]=useState();
+  const [loading,setLoading]=useState(true);
+  const [error,setError]=useState();
+  const apiUrl=import.meta.env.VITE_API_URL;
+  useEffect(()=>{
+    const fetchtest=async ()=>{
+      try {
+        const resp=await axios.get(`${apiUrl}/course/gettestbyid/6654f331cea7f9ad81ea2a56`)
+        console.log(resp);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchtest();
+  },[])
   return (
     <div className="mx-20 px-4 py-8">
       <h2 className="text-3xl font-bold mb-8">Take Test</h2>

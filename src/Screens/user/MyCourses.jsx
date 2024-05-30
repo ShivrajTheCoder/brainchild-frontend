@@ -41,8 +41,8 @@ export default function MyCourses() {
                         <p className="text-gray-700 mb-4">
                             {course.description.length > 150 ? `${course.description.substring(0, 150)}...` : course.description}
                         </p>
-                        <p className="text-sm text-gray-500">Enrolled: {course.enrolled}</p>
-                        <button className=' py-2 w-full bg-black text-white font-semibold text-lg rounded-md ' onClick={()=>navigate(`/viewcourse/${course._id}`)}>Continue Learning</button>
+                        <p className="text-sm text-gray-500">Enrolled: {course.enrolled} {course._id}</p>
+                        <button className=' py-2 w-full bg-black text-white font-semibold text-lg rounded-md ' onClick={()=>navigate(`/viewcourse/${course._id}`)}>Continue Learning </button>
                     </div>
                 ))}
             </div>
