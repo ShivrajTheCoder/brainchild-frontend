@@ -22,6 +22,11 @@ const ParentSidebar = () => {
       >
         Monitor Activities
       </Link>
+      <Link to={"/parentdashboard/testreports"}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded my-1"
+      >
+        Test Reports
+      </Link>
     
     </div>
   );
