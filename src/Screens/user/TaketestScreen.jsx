@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import QuestionCard from '../../Components/Exam/QuestionCard';
 
 const TaketestScreen = () => {
+  const navigate=useNavigate();
   const { testId } = useParams();
   const [selectedOptions, setSelectedOptions] = useState({});
   const [test, setTest] = useState(null);
@@ -46,6 +47,7 @@ const TaketestScreen = () => {
       })
       if(resp.status===201){
         console.log(resp.data);
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -77,7 +79,7 @@ const TaketestScreen = () => {
 
   return (
     <div className="mx-20 px-4 py-8">
-      <h2 className="text-3xl font-bold mb-8">Take Test</h2>
+      <h2 className="text-3xl font-bold mb-8">{test.testName}</h2>
       {test?.questions?.map((question, i) => (
         <QuestionCard
           question={question}

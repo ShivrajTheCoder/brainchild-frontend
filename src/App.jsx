@@ -33,50 +33,52 @@ import TestReportScreen from './Screens/user/TestReportScreen';
 import ChildTestReports from './Screens/parents/ChildTestReports';
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="container mx-auto ">
-        <Routes>
-          <Route path='/' element={<Home />} >
-            <Route index element={<Explore />} />
-            <Route path='/mycourses' element={<MyCourses/>} />
-            <Route path='/upcomingtests' element={<UpcomingTestsScreen/>} />
-            <Route path='/myreport' element={<MyReportScreen/>} />
-            <Route path='/mytestreport' element={<TestReportScreen/>} />
-            <Route path='/viewcourse/:courseId' element={<ViewCourse/>} />
-          </Route>
-          <Route path='/aboutus' element={<AboutUs />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/take-test/:testId' element={<TaketestScreen />} />
-          {/* student routes */}
-          <Route path='/course/:courseId' element={<CourseDetials />} />
-          {/* teacher routes */}
-          <Route path='/teacherdashboard' element={<TeacherDashboard />} >
-            <Route index element={<TeacherInfo />} />
-            <Route path='/teacherdashboard/addtest' element={<CreateTestScreen />} />
-            <Route path='/teacherdashboard/addcourse' element={<AddCourseForm />} />
-            <Route path='/teacherdashboard/addvideo' element={<AddVideoForm />} />
-            <Route path='/teacherdashboard/viewcourse' element={<TeacherCourses />} />
-            <Route path='/teacherdashboard/viewvideos' element={<TeacherVideos />} />
-          </Route>
+    <main className=' font-serif text-lg font-normal bg-gradient-to-r from-[#ced4da] from-10% via-[#dee2e6] via-30% to-[#f8f9fa] to-90% min-h-screen'>
+      <BrowserRouter>
+        {/* <Navbar /> */}
+        <div className="container mx-auto ">
+          <Routes>
+            <Route path='/' element={<Home />} >
+              <Route index element={<Explore />} />
+              <Route path='/mycourses' element={<MyCourses />} />
+              <Route path='/upcomingtests' element={<UpcomingTestsScreen />} />
+              <Route path='/myreport' element={<MyReportScreen />} />
+              <Route path='/mytestreport' element={<TestReportScreen />} />
+              <Route path='/viewcourse/:courseId' element={<ViewCourse />} />
+            </Route>
+            <Route path='/aboutus' element={<AboutUs />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/take-test/:testId' element={<TaketestScreen />} />
+            {/* student routes */}
+            <Route path='/course/:courseId' element={<CourseDetials />} />
+            {/* teacher routes */}
+            <Route path='/teacherdashboard' element={<TeacherDashboard />} >
+              <Route index element={<TeacherInfo />} />
+              <Route path='/teacherdashboard/addtest' element={<CreateTestScreen />} />
+              <Route path='/teacherdashboard/addcourse' element={<AddCourseForm />} />
+              <Route path='/teacherdashboard/addvideo' element={<AddVideoForm />} />
+              <Route path='/teacherdashboard/viewcourse' element={<TeacherCourses />} />
+              <Route path='/teacherdashboard/viewvideos' element={<TeacherVideos />} />
+            </Route>
 
-          <Route path='/admindashboard' element={<AdminDashboard />} >
-            <Route index element={<AdminInfoContainer/>} />
-            <Route path='/admindashboard/pendingvideos' element={<ApprovalVideos />} />
-            <Route path='/admindashboard/pendingcourses' element={<ApprovalCourses />} />
-          </Route>
-          <Route path='/parentdashboard' element={<ParentDashboard />} >
-            <Route index element={<ChildReportScreen />} />
-            <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
-            <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
-            <Route path='/parentdashboard/montioractivities' element={<MonitorScreen />} />
-            <Route path='/parentdashboard/testreports' element={<ChildTestReports />} />
-          </Route>
-        </Routes>
-      </div>
-      <Footer />
-    </BrowserRouter>
+            <Route path='/admindashboard' element={<AdminDashboard />} >
+              <Route index element={<AdminInfoContainer />} />
+              <Route path='/admindashboard/pendingvideos' element={<ApprovalVideos />} />
+              <Route path='/admindashboard/pendingcourses' element={<ApprovalCourses />} />
+            </Route>
+            <Route path='/parentdashboard' element={<ParentDashboard />} >
+              <Route index element={<ChildReportScreen />} />
+              <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
+              <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
+              <Route path='/parentdashboard/montioractivities' element={<MonitorScreen />} />
+              <Route path='/parentdashboard/testreports' element={<ChildTestReports />} />
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </main>
   )
 }
 
