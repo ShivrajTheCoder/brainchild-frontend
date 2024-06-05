@@ -26,6 +26,9 @@ export default function UserSidebar({ totalTime }) {
       <Link to="/myreport" className='block bg-[#14213d] mb-2 text-white py-2 px-4 rounded-md text-bold text-lg'>
         My Reports
       </Link>
+      <Link to="/mytestreport" className='block bg-[#14213d] mb-2 text-white py-2 px-4 rounded-md text-bold text-lg'>
+        My Test Reports
+      </Link>
     </div>
   );
 }

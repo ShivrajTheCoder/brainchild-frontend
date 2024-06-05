@@ -29,6 +29,7 @@ import UpcomingTestsScreen from './Screens/user/UpcomingTestsScreen';
 import MyReportScreen from './Screens/user/MyReportScreen';
 import ViewCourse from './Screens/user/ViewCourse';
 import MonitorScreen from './Screens/parents/MonitorScreen';
+import TestReportScreen from './Screens/user/TestReportScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +41,7 @@ function App() {
             <Route path='/mycourses' element={<MyCourses/>} />
             <Route path='/upcomingtests' element={<UpcomingTestsScreen/>} />
             <Route path='/myreport' element={<MyReportScreen/>} />
+            <Route path='/mytestreport' element={<TestReportScreen/>} />
             <Route path='/viewcourse/:courseId' element={<ViewCourse/>} />
           </Route>
           <Route path='/aboutus' element={<AboutUs />} />
