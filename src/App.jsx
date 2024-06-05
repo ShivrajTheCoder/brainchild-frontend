@@ -28,6 +28,7 @@ import MyCourses from './Screens/user/MyCourses';
 import UpcomingTestsScreen from './Screens/user/UpcomingTestsScreen';
 import MyReportScreen from './Screens/user/MyReportScreen';
 import ViewCourse from './Screens/user/ViewCourse';
+import MonitorScreen from './Screens/parents/MonitorScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -66,6 +67,7 @@ function App() {
             <Route index element={<ChildReportScreen />} />
             <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
             <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
+            <Route path='/parentdashboard/montioractivities' element={<MonitorScreen />} />
           </Route>
         </Routes>
       </div>

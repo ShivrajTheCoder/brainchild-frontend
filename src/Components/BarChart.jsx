@@ -19,13 +19,13 @@ const BarChart = ({ data }) => {
     },
   };
 
-  const labels = Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`);
+  const labels = Array.from({ length: 30 }, (_, i) => `Day ${30 - i}`);
 
   const chartData = {
     labels,
     datasets: [
       {
-        label: 'Hours Online',
+        label: 'Minutes Online',
         data: data,
         backgroundColor: 'rgba(255, 205, 86, 0.7)',
         borderColor: 'rgba(255, 205, 86, 1)',

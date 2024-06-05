@@ -12,6 +12,7 @@ export default function CourseVideoContainer({ courseId }) {
         const fetchVideos = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/courses/getcoursevideos/${courseId}`);
+                console.log(response.data.videos);
                 setVideos(response.data.videos);
             } catch (error) {
                 setError(error.message);
@@ -23,7 +24,20 @@ export default function CourseVideoContainer({ courseId }) {
         fetchVideos();
     }, [apiUrl, courseId]);
 
-    const handleVideoClick = (url) => {
+    const addWatchedVideo=async(videoId)=>{
+        try {
+            const response=await axios.post(`${apiUrl}/user/watchedvideo`,{
+                userId:"65df757175d959b627baeef2",
+                videoId
+            })
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleVideoClick =async (url,videoId) => {
+        await addWatchedVideo(videoId);
         setFullScreenVideo(url);
     };
 
@@ -55,7 +69,7 @@ export default function CourseVideoContainer({ courseId }) {
                             </thead>
                             <tbody className="bg-white divide-y border divide-gray-200 font-bold">
                                 {videos.map((video, index) => (
-                                    <tr key={index} onClick={() => handleVideoClick(video.url)} className="cursor-pointer hover:bg-gray-100">
+                                    <tr key={index} onClick={() => handleVideoClick(video.videourl,video._id)} className="cursor-pointer hover:bg-gray-100">
                                         <td className="px-6 py-4 whitespace-nowrap">{video.title}</td>
                                     </tr>
                                 ))}

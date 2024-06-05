@@ -17,6 +17,11 @@ const ParentSidebar = () => {
       >
         View Course Requests
       </Link>
+      <Link to={"/parentdashboard/montioractivities"}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded my-1"
+      >
+        Monitor Activities
+      </Link>
     
     </div>
   );
