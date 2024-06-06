@@ -32,6 +32,9 @@ import MonitorScreen from './Screens/parents/MonitorScreen';
 import TestReportScreen from './Screens/user/TestReportScreen';
 import ChildTestReports from './Screens/parents/ChildTestReports';
 import AddSuggestionScreen from './Screens/parents/AddSuggestionScreen';
+import AdminLogin from './Screens/Auth/AdminLogin';
+import ParentLogin from './Screens/Auth/ParentLogin';
+import TeacherLogin from './Screens/Auth/TeacherLogin';
 function App() {
   return (
     <main className=' font-serif text-lg font-normal bg-gradient-to-r from-[#ced4da] from-10% via-[#dee2e6] via-30% to-[#f8f9fa] to-90% min-h-screen'>
@@ -39,6 +42,11 @@ function App() {
         {/* <Navbar /> */}
         <div className="container mx-auto ">
           <Routes>
+            <Route path='/adminlogin' element={<AdminLogin />} />
+            <Route path='/parentlogin' element={<ParentLogin />} />
+            <Route path='/teacherlogin' element={<TeacherLogin />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
             <Route path='/' element={<Home />} >
               <Route index element={<Explore />} />
               <Route path='/mycourses' element={<MyCourses />} />
@@ -47,11 +55,8 @@ function App() {
               <Route path='/mytestreport' element={<TestReportScreen />} />
               <Route path='/viewcourse/:courseId' element={<ViewCourse />} />
             </Route>
-            <Route path='/aboutus' element={<AboutUs />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
+            {/* <Route path='/aboutus' element={<AboutUs />} /> */}
             <Route path='/take-test/:testId' element={<TaketestScreen />} />
-            {/* student routes */}
             <Route path='/course/:courseId' element={<CourseDetials />} />
             {/* teacher routes */}
             <Route path='/teacherdashboard' element={<TeacherDashboard />} >

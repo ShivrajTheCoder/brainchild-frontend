@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { adminLogin } from '../../redux/reducers/adminReducer';
 
-export default function TeacherLogin() {
+export default function AdminLogin() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch(); // Hook to dispatch actions
@@ -31,7 +31,7 @@ export default function TeacherLogin() {
       return;
     }
     try {
-      const resp = await axios.post(`${apiUrl}/user/login`, { email, password });
+      const resp = await axios.post(`${apiUrl}/auth/login`, { email, password });
       console.log(resp.data, resp.status);
       if (resp.status === 200) {
         dispatch(adminLogin({ email })); // Dispatch the admin login action with the admin's email
@@ -45,7 +45,7 @@ export default function TeacherLogin() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="max-w-md w-full bg-white p-6 shadow-md rounded-md">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800">Login</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">Admin Login</h1>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 mb-2">Email:</label>
@@ -80,9 +80,6 @@ export default function TeacherLogin() {
             Login
           </button>
         </form>
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">Don't have an account? <a href="/signup" className="text-gray-800 hover:underline">Sign up</a></p>
-        </div>
       </div>
     </div>
   );
