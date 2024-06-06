@@ -1,4 +1,5 @@
 import React from 'react';
+import AllSuggestionContainer from './AllSuggestionContainer';
 
 const AdminInfoContainer = () => {
   // Dummy data
@@ -28,6 +29,7 @@ const AdminInfoContainer = () => {
           <p className="text-sm text-gray-600 mb-2">{numTests}</p>
         </div>
       </div>
+      <AllSuggestionContainer/>
     </div>
   );
 };
