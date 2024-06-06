@@ -12,6 +12,7 @@ export default function ChildWatchedVideos() {
         const fetchWatchedVideos = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/parent/childwatched/65df757175d959b627baeef2`,);
+                // console.log(response.data);
                 setVideos(response.data.videos);
             } catch (error) {
                 setError(error.message);
@@ -33,19 +34,23 @@ export default function ChildWatchedVideos() {
 
     return (
         <div className="m-10">
-            <h2 className=" font-light text-xl mb-5">Watched Videos</h2>
             {videos.length === 0 ? (
                 <p>No videos watched yet.</p>
             ) : (
-                <ul>
+                <section>
                     {videos.map((video, index) => (
-                        <li key={index} className="my-2 grid grid-cols-6">
-                            <h3 className="font-semibold col-span">{video.title}</h3>
-                            <img src={video.thumbnail} alt={video.title} className="w-32 h-18 object-cover col-span-2" />
-                            <p>{video.description}</p>
-                        </li>
+                        <div key={index} className="flex bg-white shadow">
+                            <img src={video.thumbnail} alt={video.title} className='' />
+                            <div className=' px-3 py-1'>
+                                <div className='font-bold text-2xl underline underline-offset-2'>{video.title}</div>
+                                <div className='font-bold text-lg'>{video.course.name}</div>
+                                <div className=' text-gray-600'>{video.description}</div>
+                                <div className=''>Teacher Contact: <span className=' text-red-500'>{video.author.email}</span> </div>
+                            </div>
+                        </div>
+                        
                     ))}
-                </ul>
+                </section>
             )}
         </div>
     );

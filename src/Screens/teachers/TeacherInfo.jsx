@@ -32,7 +32,7 @@ export default function TeacherInfo() {
   return (
     <div className="p-6">
       <ToastContainer />
-      <h1 className="text-2xl font-bold mb-4">Teacher Info</h1>
+      <h1 className="text-2xl font-bold mb-4">My Stats</h1>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -52,7 +52,7 @@ export default function TeacherInfo() {
 function AnimatedTile({ title, value }) {
   return (
     <motion.div
-      className="border border-gray-300 rounded-md p-4"
+      className="border bg-white border-gray-300 rounded-md p-4"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2 }}
