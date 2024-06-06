@@ -14,7 +14,7 @@ export default function CoursesContainer() {
         const getCourses = async () => {
             try {
                 const resp = await axios.get(`${apiUrl}/courses/getallcourses`);
-                console.log(resp.data.courses);
+                // console.log(resp.data.courses);
                 setCourses(resp.data.courses)
             }
             catch (error) {

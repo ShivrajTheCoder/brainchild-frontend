@@ -6,6 +6,7 @@ import { SlCalender } from "react-icons/sl";
 import { FaClock } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 export default function UpcomingTestsScreen() {
   const [tests, setTests] = useState([]);
@@ -13,12 +14,12 @@ export default function UpcomingTestsScreen() {
   const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
   const navigation = useNavigate();
-
+  const user=useSelector((state)=>state.user);
+  const {userId}=user;
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const userId = "yourUserId"; // Replace with actual userId
-        const response = await axios.get(`${apiUrl}/user/getuserupcomingtests/65df757175d959b627baeef2`);
+        const response = await axios.get(`${apiUrl}/user/getuserupcomingtests/${userId}`);
         console.log(response.data.tests);
         const formattedTests = response.data.tests.map(test => ({
           ...test,

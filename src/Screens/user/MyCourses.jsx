@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 export default function MyCourses() {
     const [courses, setCourses] = useState([]);
@@ -9,11 +10,12 @@ export default function MyCourses() {
     const [error, setError] = useState(null);
     const apiUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
-
+    const user=useSelector((state)=>state.user);
+    const {userId}=user;
     useEffect(() => {
         const fetchMyCourses = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/user/getenrolled/65df757175d959b627baeef2`);
+                const response = await axios.get(`${apiUrl}/user/getenrolled/${userId}`);
                 setCourses(response.data.courses);
             } catch (error) {
                 setError(error.message);
@@ -29,7 +31,7 @@ export default function MyCourses() {
     }
 
     if (error) {
-        return <div className="m-10 text-red-500">Error: {error}</div>;
+        return <div className="m-10 text-red-500">No Courses Found!</div>;
     }
 
     return (

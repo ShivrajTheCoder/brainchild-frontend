@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BarChart from '../../Components/BarChart';
+import { useSelector } from 'react-redux';
 // const data = [2, 3, 1, 4, 5, 3, 2, 5, 6, 4, 3, 5, 7, 8, 6, 7, 3, 5, 6, 7, 4, 5, 6, 7, 8, 9, 5, 6, 4, 5];
 const MyReportScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userId="65df757175d959b627baeef2"
+  const user=useSelector((state)=>state.user);
+    const {userId}=user;
+  // const userId="65df757175d959b627baeef2"
   const apiUrl=import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUserTime = async () => {

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function TestReportScreen() {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [testReports, setTestReports] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const userId = "65df757175d959b627baeef2"; // Assuming you have a valid user ID
+    const user=useSelector((state)=>state.user);
+    const {userId}=user;
 
     useEffect(() => {
         setError(null);
@@ -16,7 +18,7 @@ export default function TestReportScreen() {
                 setTestReports(response.data);
                 setLoading(false);
             } catch (err) {
-                setError(err.message);
+                setError("Not found");
                 setLoading(false);
             }
         };
