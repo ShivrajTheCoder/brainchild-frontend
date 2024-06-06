@@ -60,10 +60,10 @@ export default function TeacherSignup() {
       return;
     }
     try {
-      const resp = await axios.post(`${apiUrl}/user/signup`, { username, email, password });
+      const resp = await axios.post(`${apiUrl}/teacher/signup`, { username, email, password });
       console.log(resp.data, resp.status);
       if (resp.status === 201) {
-        navigate("/login");
+        navigate("/teacherlogin");
       }
     } catch (error) {
       console.log(error);
@@ -133,7 +133,7 @@ export default function TeacherSignup() {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">Already have an account? <a href="/login" className="text-gray-800 hover:underline">Login</a></p>
+          <p className="text-sm text-gray-600">Already have an account? <a href="/teacherlogin" className="text-gray-800 hover:underline">Login</a></p>
         </div>
       </div>
     </div>

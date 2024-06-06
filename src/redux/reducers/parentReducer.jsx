@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userSlice = createSlice({
-  name: "User",
+const parentSlice = createSlice({
+  name: "Parent",
   initialState: {
     userId: "",
     token: "",
@@ -10,7 +10,7 @@ const userSlice = createSlice({
     username: ""
   },
   reducers: {
-    login: (state, action) => {
+    parentlogin: (state, action) => {
       const { userId, token, email, username } = action.payload;
       state.userId = userId;
       state.token = token;
@@ -18,7 +18,7 @@ const userSlice = createSlice({
       state.email = email;
       state.username = username;
     },
-    logout: (state) => {
+    parentlogout: (state) => {
       state.userId = "";
       state.token = "";
       state.isLoggedIn = false;
@@ -28,5 +28,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { login, logout } = userSlice.actions;
-export default userSlice.reducer;
+export const { parentlogin, parentlogout } = parentSlice.actions;
+export default parentSlice.reducer;

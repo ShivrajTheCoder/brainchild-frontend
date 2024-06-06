@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { adminLogin } from '../../redux/reducers/adminReducer';
+import { teacherLogin } from '../../redux/reducers/teacherReducer';
 
 export default function TeacherLogin() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -34,8 +35,9 @@ export default function TeacherLogin() {
       const resp = await axios.post(`${apiUrl}/teacher/login`, { email, password });
       console.log(resp.data, resp.status);
       if (resp.status === 200) {
-        dispatch(adminLogin({ email })); // Dispatch the admin login action with the admin's email
-        navigate("/admin/dashboard");
+        const {user,token}=resp.data;
+        dispatch(teacherLogin({ email,username:user.username,token })); 
+        navigate("/teacherdashboard");
       }
     } catch (error) {
       console.log(error);
