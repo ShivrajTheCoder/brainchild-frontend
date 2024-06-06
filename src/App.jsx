@@ -31,6 +31,7 @@ import ViewCourse from './Screens/user/ViewCourse';
 import MonitorScreen from './Screens/parents/MonitorScreen';
 import TestReportScreen from './Screens/user/TestReportScreen';
 import ChildTestReports from './Screens/parents/ChildTestReports';
+import AddSuggestionScreen from './Screens/parents/AddSuggestionScreen';
 function App() {
   return (
     <main className=' font-serif text-lg font-normal bg-gradient-to-r from-[#ced4da] from-10% via-[#dee2e6] via-30% to-[#f8f9fa] to-90% min-h-screen'>
@@ -69,7 +70,7 @@ function App() {
             </Route>
             <Route path='/parentdashboard' element={<ParentDashboard />} >
               <Route index element={<ChildReportScreen />} />
-              <Route path='/parentdashboard/addsuggestion' element={<FeedbackForm />} />
+              <Route path='/parentdashboard/addsuggestion' element={<AddSuggestionScreen />} />
               <Route path='/parentdashboard/courserequests' element={<CourseRequestsScreen />} />
               <Route path='/parentdashboard/montioractivities' element={<MonitorScreen />} />
               <Route path='/parentdashboard/testreports' element={<ChildTestReports />} />

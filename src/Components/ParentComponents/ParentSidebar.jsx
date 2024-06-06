@@ -7,11 +7,11 @@ const ParentSidebar = () => {
   return (
     <div className="bg-gray-200 w-1/4 h-screen flex flex-col  p-4">
       <h2 className="text-xl font-semibold mb-4 cursor-pointer" onClick={()=>navigate("/parentdashboard")}>Parent Dashboard</h2>
-      <button
+      <Link to={"/parentdashboard/addsuggestion"}
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded my-1"
       >
         Add Suggestion
-      </button>
+      </Link>
       <Link to={"/parentdashboard/courserequests"}
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded my-1"
       >
