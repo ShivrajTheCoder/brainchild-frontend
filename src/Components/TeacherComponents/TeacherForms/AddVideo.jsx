@@ -4,13 +4,16 @@ import Textarea from '../../Textarea';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 
 const AddVideoForm = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState(null);
-  const authorId = '6578af9de664acfdcff9e0b4';
+  const teacher = useSelector((state) => state.teacher);
+    const { isLoggedIn,userId } = teacher;
+  const authorId = userId;
   const [formData, setFormData] = useState({
     videoTitle: '',
     videoDescription: '',

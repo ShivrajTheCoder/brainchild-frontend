@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Input from '../../Input';
 import Textarea from '../../Textarea';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-const AddCourseForm = ({ onClose }) => {
+const AddCourseForm = () => {
+  const teacher = useSelector((state) => state.teacher);
+  const { isLoggedIn, userId } = teacher;
+  console.log(teacher)
   const apiUrl = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     courseTitle: '',
@@ -52,16 +56,21 @@ const AddCourseForm = ({ onClose }) => {
     data.append('name', formData.courseTitle);
     data.append('description', formData.courseDescription);
     data.append('thumbnail', formData.courseThumbnail);
-    data.append('author', "6578af9de664acfdcff9e0b4");
+    data.append('author', userId);
     try {
       const response = await axios.post(`${apiUrl}/courses/createcourse`, data);
-        if(response.status===201){
-            console.log("Successs");
-            onClose(); // Close modal after successful upload
-        }
-        else{
-            console.log("error");
-        }
+      if (response.status === 201) {
+        console.log("Successs");
+        // onClose(); 
+        setFormData({
+          courseTitle: '',
+          courseDescription: '',
+          courseThumbnail: null,
+        })
+      }
+      else {
+        console.log("error");
+      }
       console.log(response.data); // Handle response data as needed
     } catch (error) {
       console.error('Error adding course:', error);
@@ -106,7 +115,6 @@ const AddCourseForm = ({ onClose }) => {
         </div>
         <div className="flex justify-end mt-4">
           <button type="submit" className="mr-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add Course</button>
-          <button type="button" onClick={onClose} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400">Cancel</button>
         </div>
       </form>
     </div>

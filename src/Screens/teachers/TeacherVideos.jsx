@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 
 export default function TeacherVideos() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const authorId = '6578af9de664acfdcff9e0b4';
+  const teacher = useSelector((state) => state.teacher);
+    const { isLoggedIn,userId } = teacher;
+  const authorId = userId;
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

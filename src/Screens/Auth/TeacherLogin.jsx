@@ -36,7 +36,7 @@ export default function TeacherLogin() {
       console.log(resp.data, resp.status);
       if (resp.status === 200) {
         const {user,token}=resp.data;
-        dispatch(teacherLogin({ email,username:user.username,token })); 
+        dispatch(teacherLogin({ email,username:user.username,token,userId:user._id })); 
         navigate("/teacherdashboard");
       }
     } catch (error) {

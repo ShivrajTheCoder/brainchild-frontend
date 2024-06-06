@@ -5,11 +5,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
 
 export default function TeacherInfo() {
+  const teacher = useSelector((state) => state.teacher);
+    const { isLoggedIn,userId } = teacher;
   const apiUrl = import.meta.env.VITE_API_URL;
   const [teacherInfo, setTeacherInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const authorId = '6578af9de664acfdcff9e0b4';
+  const authorId = userId;
 
   useEffect(() => {
     const fetchTeacherInfo = async () => {

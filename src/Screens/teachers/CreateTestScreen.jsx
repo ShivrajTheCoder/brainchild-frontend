@@ -2,8 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import AddQuestionForm from '../../Components/TeacherComponents/AddQuestionForm';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateTestScreen() {
+    const navigate=useNavigate();
     const [step, setStep] = useState(1);
     const [course, setCourse] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -25,7 +28,9 @@ export default function CreateTestScreen() {
     const [courses, setCourses] = useState([]);
     const [error, setError] = useState(null);
     const apiUrl = import.meta.env.VITE_API_URL;
-    const authorId = '6578af9de664acfdcff9e0b4';
+    const teacher = useSelector((state) => state.teacher);
+    const { isLoggedIn,userId,token } = teacher;
+    const authorId = userId;
     const [validationError, setValidationError] = useState('');
 
     useEffect(() => {
@@ -82,7 +87,7 @@ export default function CreateTestScreen() {
     };
 
     const handleAddTopic = () => {
-        if (newTopic && topics.length < 5 && !topics.includes(newTopic)) {
+        if (newTopic && topics.length < 3 && !topics.includes(newTopic)) {
             setTopics([...topics, newTopic]);
             setNewTopic('');
         }
@@ -125,6 +130,9 @@ export default function CreateTestScreen() {
                 topics
             });
             console.log(response.data, 'Test created successfully');
+            if(response.status===201){
+                navigate("/teacherdashboard")
+            }
         } catch (error) {
             console.error('Error creating test:', error);
         }
