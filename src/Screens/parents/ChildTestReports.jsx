@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function ChildTestReports() {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [testReports, setTestReports] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const userId = "65df757175d959b627baeef2"; // Assuming you have a valid user ID
-
+    const parent = useSelector((state) => state.parent);
+    const { userId, token, isLoggedIn, childId } = parent;
     useEffect(() => {
         setError(null);
         const fetchTestReports = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/user/gettestreport/${userId}`);
+                const response = await axios.get(`${apiUrl}/user/gettestreport/${childId}`);
                 setTestReports(response.data);
                 setLoading(false);
             } catch (err) {

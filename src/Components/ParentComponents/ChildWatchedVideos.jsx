@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function ChildWatchedVideos() {
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const userId = 'user-id'; // Replace with the actual user ID
     const apiUrl = import.meta.env.VITE_API_URL;
-
+    const parent = useSelector((state) => state.parent);
+    const { userId, token, isLoggedIn, childId } = parent;
     useEffect(() => {
         const fetchWatchedVideos = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/parent/childwatched/65df757175d959b627baeef2`,);
+                const response = await axios.get(`${apiUrl}/parent/childwatched/${childId}`,);
                 // console.log(response.data);
                 setVideos(response.data.videos);
             } catch (error) {

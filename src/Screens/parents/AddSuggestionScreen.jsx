@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const AddSuggestionScreen = () => {
     const [description, setDescription] = useState('');
     const [error, setError] = useState(null);
     const apiUrl = import.meta.env.VITE_API_URL;
+    const parent = useSelector((state) => state.parent);
+    const { userId, token, isLoggedIn, childId } = parent;
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
     };
@@ -15,7 +18,7 @@ const AddSuggestionScreen = () => {
         try {
             const response = await axios.post(`${apiUrl}/parent/addsuggestion`, {
                 description,
-                author:"65df7dec69972b109beaec53"
+                author: userId
             });
             if (response.status === 201) {
                 alert('Suggestion added successfully!');

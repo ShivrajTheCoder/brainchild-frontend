@@ -8,13 +8,15 @@ const ChildReportScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userId="65df757175d959b627baeef2"
+  const parent = useSelector((state) => state.parent);
+  const { userId, token, isLoggedIn, childId } = parent;
+  // const userId="65df757175d959b627baeef2"
   const apiUrl=import.meta.env.VITE_API_URL;
   useEffect(() => {
     setError(null);
     const fetchUserTime = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/user/getusertime/${userId}`);
+        const response = await axios.get(`${apiUrl}/user/getusertime/${childId}`);
         if(response.status===200){
           // console.log(response.data);
           const {timeline}=response.data;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import RazorpayButton from '../../Components/Payment/RazorpayButton';
+import { useSelector } from 'react-redux';
 
 export default function CourseRequestsScreen() {
   const [requests, setRequests] = useState([]);
@@ -8,10 +9,12 @@ export default function CourseRequestsScreen() {
   const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
   const [order,setOrder]=useState(null);
+  const parent = useSelector((state) => state.parent);
+  const { userId, token, isLoggedIn, childId } = parent;
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const resp = await axios.get(`${apiUrl}/parent/courserequest/65df757175d959b627baeef2`);
+        const resp = await axios.get(`${apiUrl}/parent/courserequest/${childId}`);
         setRequests(resp.data.requests);
       } catch (error) {
         setError(error);
