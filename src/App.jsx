@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Screens/Home';
 import Login from './Screens/Auth/Login';
-import Signup from './Screens/Auth/Signup';
+
 import Navbar from './Components/Layout/Navbar';
 import Footer from './Components/Layout/Footer';
 import CourseDetials from './Screens/CourseDetials';
@@ -35,6 +35,9 @@ import AddSuggestionScreen from './Screens/parents/AddSuggestionScreen';
 import AdminLogin from './Screens/Auth/AdminLogin';
 import ParentLogin from './Screens/Auth/ParentLogin';
 import TeacherLogin from './Screens/Auth/TeacherLogin';
+import Signup from './Screens/Auth/Signups/Signup';
+import ParentSignup from './Screens/Auth/Signups/ParentSignup';
+import TeacherSignup from './Screens/Auth/Signups/TeacherSignup';
 function App() {
   return (
     <main className=' font-serif text-lg font-normal bg-gradient-to-r from-[#ced4da] from-10% via-[#dee2e6] via-30% to-[#f8f9fa] to-90% min-h-screen'>
@@ -47,6 +50,8 @@ function App() {
             <Route path='/teacherlogin' element={<TeacherLogin />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/parentsignup' element={<ParentSignup />} />
+            <Route path='/teachersignup' element={<TeacherSignup/>} />
             <Route path='/' element={<Home />} >
               <Route index element={<Explore />} />
               <Route path='/mycourses' element={<MyCourses />} />
