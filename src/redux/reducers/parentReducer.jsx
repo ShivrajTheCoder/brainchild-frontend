@@ -7,16 +7,18 @@ const parentSlice = createSlice({
     token: "",
     isLoggedIn: false,
     email: "",
-    username: ""
+    username: "",
+    childId: ""
   },
   reducers: {
     parentlogin: (state, action) => {
-      const { userId, token, email, username } = action.payload;
+      const { userId, token, email, username, childId } = action.payload;
       state.userId = userId;
       state.token = token;
       state.isLoggedIn = true;
       state.email = email;
       state.username = username;
+      state.childId = childId;
     },
     parentlogout: (state) => {
       state.userId = "";
@@ -24,6 +26,7 @@ const parentSlice = createSlice({
       state.isLoggedIn = false;
       state.email = "";
       state.username = "";
+      state.childId = "";
     },
   },
 });

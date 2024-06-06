@@ -33,10 +33,10 @@ export default function TeacherLogin() {
     }
     try {
       const resp = await axios.post(`${apiUrl}/parent/login`, { email, password });
-      console.log(resp.data, resp.status);
+      // console.log(resp.data, resp.status);
       if (resp.status === 200) {
         const {token,user}=resp.data;
-        dispatch(parentlogin({ email,username:user.username,userId:user._id,token }));
+        dispatch(parentlogin({ email,username:user.username,userId:user._id,token,childId:user.child }));
         navigate("/parentdashboard");
       }
     } catch (error) {
