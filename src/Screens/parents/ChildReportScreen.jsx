@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import BarChart from '../../Components/BarChart';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 
 const ChildReportScreen = () => {

@@ -64,7 +64,7 @@ export default function ViewCourse() {
                                 <p >By <span className=' text-blue-700 underline underline-offset-2'>Shivraj Thapliyal</span></p>
                             </div>
                         </div>
-                        <img src={defaultImageUrl} alt="course image" className='h-64 absolute top-20 right-8 rounded-lg' />
+                        <img src={course.thumbnail} alt="course image" className='h-64 absolute top-20 right-8 rounded-lg' />
                     </div>
                     <div className=' my-10 mx-10 grid grid-cols-3'>
                         <p className='px-8 text-lg border py-8 mx-3 col-span-2'>{course.description}</p>

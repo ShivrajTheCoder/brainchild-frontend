@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 export default function TeacherInfo() {
   const teacher = useSelector((state) => state.teacher);

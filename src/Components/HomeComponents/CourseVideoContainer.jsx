@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function CourseVideoContainer({ courseId }) {
+    // console.log(courseId);
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [fullScreenVideo, setFullScreenVideo] = useState(null);
     const apiUrl = import.meta.env.VITE_API_URL;
-
+    const user=useSelector((state)=>state.user);
+    const {userId,token}=user;
     useEffect(() => {
         const fetchVideos = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/courses/getcoursevideos/${courseId}`);
-                console.log(response.data.videos);
+                console.log(response.data.videos,"here are the watched videos");
                 setVideos(response.data.videos);
             } catch (error) {
                 setError(error.message);
@@ -27,7 +30,7 @@ export default function CourseVideoContainer({ courseId }) {
     const addWatchedVideo=async(videoId)=>{
         try {
             const response=await axios.post(`${apiUrl}/user/watchedvideo`,{
-                userId:"65df757175d959b627baeef2",
+                userId,
                 videoId
             })
             console.log(response.data);
@@ -50,7 +53,7 @@ export default function CourseVideoContainer({ courseId }) {
     }
 
     if (error) {
-        return <div className="mx-10 text-red-500">Error: {error}</div>;
+        return <div className="mx-10 text-red-500">No Videos yet!</div>;
     }
 
     return (

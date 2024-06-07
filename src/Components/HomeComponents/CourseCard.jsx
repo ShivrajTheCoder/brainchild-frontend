@@ -29,7 +29,7 @@ const CourseCard = ({ course, descriptionWordLimit = 10 }) => {
                 <div className="flex items-center justify-between mb-4">
                     <div className='flex flex-col text-gray-500'>
                         <span > {enrolled} students</span>
-                        <span className="">{videos.length}+ videos</span>
+                        {/* <span className="">{videos.length}+ videos</span> */}
                     </div>
                     <div>
                         

@@ -4,8 +4,12 @@ import { useParams } from 'react-router-dom'
 import LoadingComponent from "../Components/LoaingComponent";
 import ErrorComponent from '../Components/ErrorComponent';
 import { BASE_URL } from '../BASE_URL';
+import { useSelector } from 'react-redux';
 
 export default function CourseDetails() {
+    const user=useSelector((state)=>state.user);
+    const {userId,parentId,token}=user;
+    console.log(user);
     const [enrreq, setEnreq] = useState(false);
     const { courseId } = useParams();
     const [course, setCourse] = useState();
@@ -32,8 +36,8 @@ export default function CourseDetails() {
         try {
             const resp = await axios.post(`${apiUrl}/user/requestenrollment`, {
                 courseId: courseId,
-                parentId: "65df7dec69972b109beaec53",
-                userId: "65df757175d959b627baeef2"
+                parentId ,
+                userId
             })
             console.log(resp);
             if (resp.status === 201) {
@@ -79,7 +83,7 @@ export default function CourseDetails() {
                                 <p >By <span className=' text-blue-700 underline underline-offset-2'>Shivraj Thapliyal</span></p>
                             </div>
                         </div>
-                        <img src={defaultImageUrl} alt="course image" className='h-64 absolute top-20 right-8 rounded-lg' />
+                        <img src={course.thumbnail} alt="course image" className='h-64 absolute top-20 right-8 rounded-lg' />
                     </div>
                     <div className=' my-10 mx-10 grid grid-cols-3 '>
                         <div className='px-8 text-lg border py-8 mx-3 col-span-2 bg-white rounded shadow'>
@@ -93,38 +97,16 @@ export default function CourseDetails() {
                             {enrreq && <button className='py-3 px-5 border w-full my-5 text-xl font-bold bg-gradient-to-r from-blue-50 to-blue-100 shadow-md' onClick={handleEnroll}>
                                 Request Pending
                             </button>}
-                            <h1 className='text-3xl font-extrabold'>Rs. 500</h1>
+                            {/* <h1 className='text-3xl font-extrabold'>Rs. 500</h1> */}
                         </div>
                     </div>
-                    <section className="mx-10">
-                        <h1 className="font-bold text-2xl">Course Content</h1>
-                        <div className='grid grid-cols-3 gap-6'>
-                            <div className="mt-4 col-span-2 my-5">
-                                <table className="min-w-full divide-y divide-gray-200 my-5">
-                                    <thead className="bg-gray-50 ">
-                                        <tr>
-                                            <th scope="col" className="px-6 py-3 text-left  text-gray-500 uppercase tracking-wider text-xl font-bold">
-                                                Video Title
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y border divide-gray-200 font-bold">
-                                        {videos.map((video, index) => (
-                                            <tr key={index} onClick={() => handleVideoClick(video.url)} className="cursor-pointer hover:bg-gray-100">
-                                                <td className="px-6 py-4 whitespace-nowrap">{video.title}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-                    {fullScreenVideo && (
+                    <CourseVideoContainer courseId={course._id} />
+                    {/* {fullScreenVideo && (
                         <div className="fixed top-0 left-0 w-full h-full bg-black z-50">
                             <video id="fullscreen-video" src={fullScreenVideo} className="w-full h-full" controls autoPlay />
                             <button className="absolute top-5 right-5 text-white" onClick={handleCloseFullScreen}>Close</button>
                         </div>
-                    )}
+                    )} */}
                 </section>
             )}
         </>
